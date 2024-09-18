@@ -1,4 +1,4 @@
-module scp
+module spc/api
 
 go 1.23.1
 
