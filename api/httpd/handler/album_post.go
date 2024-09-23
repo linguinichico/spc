@@ -3,7 +3,8 @@ package handler
 import (
 	"fmt"
 	"net/http"
-	"spc/api/platform/src/profile"
+
+	"github.com/linguinichico/spc/api/platform/src/profile"
 
 	"github.com/gin-gonic/gin"
 )

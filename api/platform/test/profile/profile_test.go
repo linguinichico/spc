@@ -1,8 +1,9 @@
 package profile_test
 
 import (
-	"spc/api/platform/src/profile"
 	"testing"
+
+	"github.com/linguinichico/spc/api/platform/src/profile"
 )
 
 func TestAdd(t *testing.T) {
