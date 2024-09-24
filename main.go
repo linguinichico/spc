@@ -42,10 +42,13 @@ func main() {
 	store.CreateGroupUserTable()
 
 	router := gin.Default()
+	group_api := router.Group("/api")
+	{
+		group_api.GET("/albums", handler.GetAlbums(collection))
+		group_api.POST("/albums", handler.PostAlbum(collection))
+		group_api.GET("/users", handler.GetUsers(store))
+		group_api.POST("/users", handler.PostUser(store))
+	}
 
-	router.GET("/albums", handler.GetAlbums(collection))
-	router.POST("/albums", handler.PostAlbum(collection))
-	router.GET("/users", handler.GetUsers(store))
-	router.POST("/users", handler.PostUser(store))
 	router.Run(API_IP + ":" + API_PORT)
 }
