@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/linguinichico/spc/api/httpd/handler"
-	"github.com/linguinichico/spc/api/platform/src/profile"
 	"github.com/linguinichico/spc/storage"
 
 	"github.com/gin-gonic/gin"
@@ -27,9 +26,6 @@ func main() {
 	API_IP := os.Getenv("API_IP")
 	API_PORT := os.Getenv("API_PORT")
 
-	// this will be the place to the initial call to the db
-	collection := profile.New()
-
 	//connect to a Postgres database
 	store, err := storage.NewPostgresStore()
 	if err != nil {
@@ -44,8 +40,6 @@ func main() {
 	router := gin.Default()
 	group_api := router.Group("/api")
 	{
-		group_api.GET("/albums", handler.GetAlbums(collection))
-		group_api.POST("/albums", handler.PostAlbum(collection))
 		group_api.GET("/users", handler.GetUsers(store))
 		group_api.POST("/users", handler.PostUser(store))
 	}
